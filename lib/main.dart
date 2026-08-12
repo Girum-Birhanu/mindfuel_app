@@ -37,21 +37,31 @@ void main() async {
     // Initialize Synheart Core
     await Synheart.initialize(
       config: SynheartConfig(
-        appId: 'app_d8c1ae97', // Extracted from assets
+        appId: 'app_mindfuel_and_c0y8awfx', // New App ID
         subjectId: generatedSubjectId,
-        mode: SynheartMode.insight,
+        mode: SynheartMode.research,
+        privacy: const PrivacyConfig(allowResearch: true),
         allowUnsignedCapabilities: true,
         cloudConfig: CloudConfig(
+          baseUrl: 'https://api.synheart.ai',
           subjectId: generatedSubjectId,
           instanceId: instanceId,
-          apiKey: 'synheart_sk_live_dXig0dtGlZ-TaXSDA50nbsKuO7NYpD2rfjxZrsVuegw',
-          orgId: 'org_2fdd42c5',
+          apiKey: 'synheart_sk_live_QzKS0_e5x2gStVMDJHcXvdw0Dfy3b2N-iODIb80OgUI',
+          orgId: 'org_mindfuel_mj728spmb9fo', // New Org ID
         ),
       ),
     );
     
     // Enable cloud upload capability (requires consent)
     Synheart.activate(SynheartFeature.cloud);
+    
+    // Explicitly grant consent for tracking behavior and cloud upload, otherwise startSession fails
+    await Synheart.grantConsent(
+      biosignals: false,
+      behavior: true,
+      phoneContext: false,
+      cloudUpload: true,
+    );
     
     // Start session asynchronously so it doesn't block runApp
     Future.microtask(() async {

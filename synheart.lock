@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "package": "synheart-core-runtime-edge",
+  "resolved_version": "v0.10.1",
+  "artifacts": {
+    "android": [
+      {
+        "path": "android/jniLibs/arm64-v8a/libsynheart_core_runtime.so",
+        "sha256": "cf5135cb0f4eea7ed093060725a93eff2af4bb0a3ecd0a956026b92371a335ff"
+      }
+    ],
+    "ios": [
+      {
+        "path": "ios/SynheartCoreRuntime.xcframework/watchos-arm64/libsynheart_core_runtime.a",
+        "sha256": "6e80a6d815c27946f0594791defa5ea7e6687953546e964c218f3d93fde3331b"
+      },
+      {
+        "path": "ios/SynheartCoreRuntime.xcframework/ios-arm64-simulator/libsynheart_core_runtime.a",
+        "sha256": "ad2886b68bb4f411656be4dd7fed59e24798d56dcd966ad7b2f3ddd8f8f6254e"
+      },
+      {
+        "path": "ios/SynheartCoreRuntime.xcframework/Info.plist",
+        "sha256": "52f5e48c78ba0042d6823fff3bc546610b1bcc286a7ee590d50099dbe8498dca"
+      },
+      {
+        "path": "ios/SynheartCoreRuntime.xcframework/ios-arm64/libsynheart_core_runtime.a",
+        "sha256": "b0c9e878fb9ed872a8c39251a96791789984ffc86b198d5b682981946d3ddc05"
+      },
+      {
+        "path": "ios/SynheartCoreRuntime.xcframework/watchos-arm64-simulator/libsynheart_core_runtime.a",
+        "sha256": "5b544bfc502a9818a56c2ebc6ff88e184cf481bf2648312ad06f990e81fae02c"
+      }
+    ]
+  },
+  "updated_at": "2026-08-11T11:02:52.9475381Z"
+}
