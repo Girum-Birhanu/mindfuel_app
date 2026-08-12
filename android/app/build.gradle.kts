@@ -33,6 +33,12 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    sourceSets {
+        getByName("main") {
+            jniLibs.srcDir("../../synheart/vendor/runtime/android/jniLibs")
+        }
+    }
 }
 
 kotlin {
