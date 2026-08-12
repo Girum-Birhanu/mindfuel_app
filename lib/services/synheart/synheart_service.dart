@@ -1,5 +1,5 @@
-// lib/services/synheart/synheart_service.dart
 import 'dart:async';
+import 'package:synheart_core/synheart_core.dart';
 
 class SynheartService {
   // Singleton pattern
@@ -9,18 +9,23 @@ class SynheartService {
     return _instance;
   }
 
+  StreamSubscription? _subscription;
+  final _capacityController = StreamController<double>.broadcast();
+
   SynheartService._internal() {
-    // Start generating mock capacity values
-    Timer.periodic(const Duration(seconds: 5), (timer) {
-      _capacityController.add(0.85); // Mock capacity
+    // Listen to real SDK updates instead of mocking
+    _subscription = Synheart.onStateUpdate.listen((state) {
+      final cap = state.hsi.capacity?.value;
+      if (cap != null) {
+        _capacityController.add(cap);
+      }
     });
   }
-
-  final _capacityController = StreamController<double>.broadcast();
 
   Stream<double> get capacityStream => _capacityController.stream;
 
   void dispose() {
+    _subscription?.cancel();
     _capacityController.close();
   }
 }

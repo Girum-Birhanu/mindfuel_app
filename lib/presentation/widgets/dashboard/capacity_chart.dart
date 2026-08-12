@@ -40,7 +40,7 @@ class CapacityChart extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       color: const Color(0xFF1E1E2C), // Sleek dark surface
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 24, 24, 16),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,61 +55,11 @@ class CapacityChart extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             SizedBox(
-              height: 220,
+              height: 180,
               child: LineChart(
                 LineChartData(
-                  gridData: FlGridData(
-                    show: true,
-                    drawVerticalLine: false,
-                    horizontalInterval: 25,
-                    getDrawingHorizontalLine: (value) {
-                      return FlLine(
-                        color: Colors.white12,
-                        strokeWidth: 1,
-                        dashArray: [4, 4], // Dashed subtle lines
-                      );
-                    },
-                  ),
-                  titlesData: FlTitlesData(
-                    show: true,
-                    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        reservedSize: 30,
-                        interval: 1,
-                        getTitlesWidget: (value, meta) {
-                          if (value.toInt() == 0 || value.toInt() == spots.length - 1) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                '#${value.toInt() + 1}',
-                                style: const TextStyle(color: Colors.white54, fontSize: 12),
-                              ),
-                            );
-                          }
-                          return const SizedBox();
-                        },
-                      ),
-                    ),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        interval: 25,
-                        reservedSize: 42,
-                        getTitlesWidget: (value, meta) {
-                          if (value == 0 || value == 50 || value == 100) {
-                            return Text(
-                              '${value.toInt()}%',
-                              style: const TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.bold),
-                            );
-                          }
-                          return const SizedBox();
-                        },
-                      ),
-                    ),
-                  ),
+                  gridData: const FlGridData(show: false), // Removed grid lines for clarity
+                  titlesData: const FlTitlesData(show: false), // Removed axes for a sleek, minimalist look
                   borderData: FlBorderData(show: false), // Clean borderless look
                   minX: 0,
                   maxX: (spots.length - 1).toDouble() > 0 ? (spots.length - 1).toDouble() : 1,
@@ -118,11 +68,11 @@ class CapacityChart extends StatelessWidget {
                   lineTouchData: LineTouchData(
                     touchTooltipData: LineTouchTooltipData(
                       getTooltipColor: (touchedSpot) => const Color(0xFF32324A),
-                      tooltipRoundedRadius: 8,
+                      tooltipRoundedRadius: 12,
                       getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                         return touchedBarSpots.map((barSpot) {
                           return LineTooltipItem(
-                            '${barSpot.y.toStringAsFixed(1)}%',
+                            '${barSpot.y.toInt()}% Capacity',
                             const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -139,13 +89,13 @@ class CapacityChart extends StatelessWidget {
                       spots: spots,
                       isCurved: true,
                       gradient: LinearGradient(colors: gradientColors),
-                      barWidth: 4,
+                      barWidth: 5,
                       isStrokeCapRound: true,
                       dotData: const FlDotData(show: false), // Hide dots for smooth look
                       belowBarData: BarAreaData(
                         show: true,
                         gradient: LinearGradient(
-                          colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),
+                          colors: gradientColors.map((color) => color.withOpacity(0.2)).toList(),
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),
