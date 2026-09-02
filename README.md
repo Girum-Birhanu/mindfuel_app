@@ -46,7 +46,7 @@ Instead of processing this massive amount of data locally, MindFuel is deeply in
 ### Installation Steps
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/mindfuel_app.git
+   git clone https://github.com/Girum-Birhanu/mindfuel_app.git
    cd mindfuel_app
    ```
 
