@@ -1,38 +1,37 @@
 # MindFuel
 
-**MindFuel** is a cognitive health and wellness application designed to help users optimize their daily routines, avoid burnout, and maximize their productivity. By correlating your daily habits with your biological "Cognitive Capacity," MindFuel helps you discover exactly which activities recharge your mental energy and which ones drain it.
+**MindFuel** is an advanced cognitive health and wellness application designed to help users optimize their daily routines, avoid burnout, and maximize their productivity. By correlating your daily habits with your biological "Cognitive Capacity," MindFuel helps you discover exactly which activities recharge your mental energy and which ones drain it.
 
 ---
 
 ## Purpose and Vision
 In today's fast-paced world, managing time isn't enough—we need to manage our *energy*. 
-MindFuel tracks your **Cognitive Capacity** (a metric representing your mental bandwidth and focus) in real-time. By logging habits (like "Drank Coffee", "Meditated", or "Deep Work Session"), you can visualize exactly how your behaviors impact your underlying biological state over time.
+MindFuel tracks your **Human State Intelligence (HSI)** (metrics representing your mental bandwidth, focus, and fatigue) in real-time. By logging habits (like "Drank Coffee", "Meditated", or "Yoga"), you can visualize exactly how your behaviors physically impact your underlying biological state.
 
-## How It Works (The Synheart Integration)
-Translating raw heartbeat data into a meaningful metric like "Cognitive Capacity" requires complex machine learning and medical-grade AI. 
+## How It Works (The Synheart Edge Engine Integration)
+Translating raw heartbeat data into meaningful metrics like "Cognitive Capacity" and "Focus" requires complex machine learning. 
 
-Instead of processing this massive amount of data locally, MindFuel is deeply integrated with the **Synheart Platform** via the `synheart_core` SDK.
-1. **Data Collection:** The app securely collects physiological telemetry (Heart Rate, HRV, RR intervals) and kinematic motion data from connected wearables (like Apple Watch, Garmin, or WearOS devices).
-2. **Cloud Processing:** This data is streamed via Synheart's heavily encrypted RAMEN protocol to the Synheart cloud (`prj_mindfuel_hmqmubcrofd9`).
-3. **AI Analysis:** Synheart runs this data through advanced AI biomarker models to filter noise, establish your personal baseline, and compute your exact **HSI (Human State Interface)** scores.
-4. **Real-time Feedback:** The Synheart SDK streams these computed metrics (like Capacity) back into MindFuel, powering the live dashboard gauges and historical trend charts.
+Rather than sending raw, private biometric data to the cloud for processing, MindFuel utilizes the **Synheart Edge Engine** to run medical-grade AI *directly on your device*.
+1. **Local Telemetry & Synthetic Data:** The app ingests physiological telemetry (Heart Rate, RR intervals) and behavioral data. For testing and demonstration, MindFuel actively pushes dynamic synthetic HR/RR signals into the engine.
+2. **On-Device ONNX Machine Learning:** The native C++/Rust Synheart engine processes this data locally on your phone using highly optimized ONNX models every 60 seconds.
+3. **Live HSI Extraction:** MindFuel extracts the computed **HSI (Human State Interface)** scores—including *Focus*, *Capacity*, *Cognitive Load*, and *Mental Fatigue*—directly from the edge engine.
+4. **Cloud Syncing (RAMEN Protocol):** After intelligence is generated locally for immediate UI feedback, the processed metrics are securely flushed to the Synheart cloud (`prj_mindfuel_hmqmubcrofd9`) for long-term storage and cross-device syncing.
 
 ---
 
-## Features
-- **Live Capacity Dashboard:** A real-time gauge displaying your current cognitive bandwidth (0-100%).
-- **Quick Habit Logger:** Instantly log daily habits and activities with a single tap.
-- **Capacity Trend Analysis:** A sleek, interactive trendline chart showing how your capacity fluctuates over time alongside your logged habits.
-- **Synheart Biometric Engine:** Fully integrated with `synheart_core` for medical-grade physiological processing.
+## Core Features
+- **Live HSI Intelligence Dashboard:** A dynamic, real-time metrics card displaying your exact Focus, Cognitive Load, Mental Fatigue, and Capacity scores computed by the local ONNX model.
+- **Interactive Habit Logger:** Instantly log daily habits. The UI provides immediate feedback on how your habits (like drinking coffee or doing cardio) fuse with your biological data to impact your scores.
+- **Offline Persistence:** Utilizing `Hive` local storage, the app caches your latest HSI metrics, ensuring your dashboard is instantly populated the second you open the app.
+- **Capacity Gauge & Trends:** Beautiful visual gauge and historical trend charts showing how your capacity fluctuates over time alongside your logged habits.
 
 ---
 
 ## How to Use the App
 1. **Launch the App:** You will be greeted by the main Dashboard.
-2. **Connect a Wearable:** (If you have a supported smartwatch) wear it to begin streaming live physiological data.
-3. **Monitor Your Capacity:** Watch the circular gauge on the home screen. A high percentage (e.g., 85%) means you have high mental bandwidth. A lower percentage indicates it might be a good time to rest.
-4. **Log Habits:** Tap any of the quick-log buttons (e.g., "Workout", "Meditation") when you perform an activity.
-5. **Analyze Trends:** Look at the "Capacity Trends" chart to see the cause-and-effect relationship between your logged habits and your brain's energy levels.
+2. **Observe the Engine:** Keep the app open for exactly 60 seconds. You will see the "Live HSI Engine Metrics" card dynamically appear as the local Synheart engine completes its first intelligence window.
+3. **Log Habits:** Tap the quick-log inputs (e.g., "cup", "cardio", "yoga"). The dashboard will instantly recalculate your metrics to provide immediate feedback on how that habit impacted your current state.
+4. **Analyze Trends:** Look at the "Capacity Trends" chart to see the cause-and-effect relationship between your logged habits and your brain's energy levels.
 
 ---
 
@@ -40,7 +39,7 @@ Instead of processing this massive amount of data locally, MindFuel is deeply in
 
 ### Prerequisites
 - Flutter SDK installed (Version 3.12.2 or higher recommended).
-- Android Studio or a connected Android device/emulator.
+- Android Studio or a connected Android device.
 - **Note:** The Synheart SDK requires Android SDK 28 (Android 9.0) or higher.
 
 ### Installation Steps
