@@ -35,7 +35,18 @@ Rather than sending raw, private biometric data to the cloud for processing, Min
 
 ---
 
-## Developer Setup & Installation
+## 📥 Quick Install (No Coding Required)
+
+If you just want to test the app on your Android phone without setting up any code, follow these steps:
+
+1. **Download the App:** Click on the `MindFuel.apk` file in this repository, then click the **Download** button (or the raw button) to save it to your Android phone.
+2. **Install:** Open the downloaded `.apk` file from your phone's notifications or Downloads folder.
+3. **Permissions:** If your phone prompts you that it "blocked installation from unknown sources", simply click **Settings** and toggle **Allow from this source**.
+4. **Open & Enjoy!** The app is fully packed with the local ML engine and ready to use.
+
+---
+
+## 💻 Developer Setup & Installation
 
 ### Prerequisites
 - Flutter SDK installed (Version 3.12.2 or higher recommended).
